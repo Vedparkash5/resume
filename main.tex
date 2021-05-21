@@ -1,227 +1,233 @@
- %%%%%%%%%%%%%%%%%
-% This is an sample CV template created using altacv.cls
-% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
-%
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%%%%%%%%%%%%%%%
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
 
-%% If you need to pass whatever options to xcolor
-\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[letterpaper,11pt]{article}
 
-%% If you are using \orcid or academicons
-%% icons, make sure you have the academicons
-%% option here, and compile with XeLaTeX
-%% or LuaLaTeX.
-% \documentclass[10pt,a4paper,academicons]{altacv}
-
-%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
-% \documentclass[10pt,a4paper,normalphoto]{altacv}
-
-\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
-
-%% AltaCV uses the fontawesome5 and academicons fonts
-%% and packages.
-%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
-
-% Change the page layout if you need to
-\geometry{left=1cm,right=1cm,top=1.5cm,bottom=.5cm,columnsep=1.2cm}
-
-% The paracol package lets you typeset columns of text in parallel
-\usepackage{paracol}
-
-% Change the font if you want to, depending on whether
-% you're using pdflatex or xelatex/lualatex
-\ifxetexorluatex
-  % If using xelatex or lualatex:
-  \setmainfont{Roboto Slab}
-  \setsansfont{Lato}
-  \renewcommand{\familydefault}{\sfdefault}
-\else
-  % If using pdflatex:
-  \usepackage[rm]{roboto}
-  \usepackage[defaultsans]{lato}
-  % \usepackage{sourcesanspro}
-  \renewcommand{\familydefault}{\sfdefault}
-\fi
-
-% Change the colours if you want to
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\definecolor{DarkPastelRed}{HTML}{450808}
-\definecolor{PastelRed}{HTML}{8F0D0D}
-\definecolor{GoldenEarth}{HTML}{E7D192}
-\colorlet{name}{black}
-\colorlet{tagline}{PastelRed}
-\colorlet{heading}{DarkPastelRed}
-\colorlet{headingrule}{GoldenEarth}
-\colorlet{subheading}{PastelRed}
-\colorlet{accent}{PastelRed}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-
-% Change some fonts, if necessary
-\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
-\renewcommand{\personalinfofont}{\footnotesize}
-\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
-\renewcommand{\cvsubsectionfont}{\large\bfseries}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
 
 
-% Change the bullets for itemize and rating marker
-% for \cvskill if you want to
-\renewcommand{\itemmarker}{{\small\textbullet}}
-\renewcommand{\ratingmarker}{\faCircle}
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
 
-%% sample.bib contains your publications
-\addbibresource{sample.bib}
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
 
-\begin{document}
-\name{Vedparkash Singh}
-%% You can add multiple photos on the left or right
-%\photoR{2.8cm}{Globe_High}
-% \photoL{2.5cm}{Yacht_High,Suitcase_High}
 
-\personalinfo{%
-  % Not all of these are required!
-  \email{v4singh@ucsd.edu}
-  \phone{510-514-5820}
-  \location{San Francisco, CA}
-  \linkedin{www.linkedin.com/in/vedparkash-singh}
-  \github{https://github.com/Vedparkash5}
-  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
-  % \orcid{0000-0000-0000-0000}
-  %% You can add your own arbtrary detail with
-  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
-  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
-  %% Or you can declare your own field with
-  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
-  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
-  % \gitlab{your_id}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
 }
 
-\makecvheader
-%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-% \AtBeginEnvironment{itemize}{\small}
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
 
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.6}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
 
-% Start a 2-column paracol. Both the left and right columns will automatically
-% break across pages if things get too long.
-\begin{paracol}{2}
-\cvsection{Experience}
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
 
-\cvevent{Instructional Aid}{UCSD Computer Science and Engineering Department  }{December 2019 -- Ongoing}{San Diego, CA}
-\begin{itemize}
-\item Increased student retention of course material including recursion, data structures, and object-oriented programming through weekly discussion sections, tutoring sessions, and by giving in depth feedback on graded assignments
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
 
-\item Designed and proctored labs, home works, and quizzes that provided students hands on practice with key software techniques and tools like GDB and Valgrind, Version Control System, the Linux environment, Makefiles, and Shell Scripting 
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
-\end{itemize}
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\divider
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-\cvevent{Programmer}{JP Morgan Chase & Co Software Engineering Virtual Experience }{August 2020 -- September 2020}{Virtual}
-\begin{itemize}
-\item Optimized the monitoring of potential trade opportunities for the user by expanding the dashboard with visualizations. The visualizations showed the correlation between two stocks which better identified under/over-valued stocks
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item Used React and Node.js in order to collect the performance of two stocks from a financial data feed and Python to calculate the level of correlation between the stocks
-\item I created an interface that uses  JP Morgan’s Perspective software technology to visualize the correlation between the stocks
 
-\end{itemize}
+\begin{document}
 
-\cvsection{Projects}
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
 
-\cvevent{Model Selection Research}{}{December 2020}{}
-\begin{itemize}
-\item Analyzed the performance of machine learning algorithms such as KNN, Logistic Regression, and Decision trees by modeling the optimized algorithms onto three different data sets and used performance statistics like accuracy, precision, and variance to determine the best performing algorithm
-\item Used Sklearn and Python to wrangle data and implement a five fold cross validation algorithm to optimize the hyper parameters of each algorithm for three different trials and used the most optimal hyper parameters from the three trials as the version of the algorithm to use for the comparisons
-\end{itemize}
+\begin{center}
+    {\Huge \scshape Vedparkash Singh} \\ \vspace{1pt}
+    2167 Medallion Drive, Union City, CA, 94587 \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ 510-514-5820 ~ \href{mailto:v4singh@ucsd.edu}{\raisebox{-0.2\height}\faEnvelope\  \underline{v4singh@ucsd.edu}} ~ 
+    \href{https://www.linkedin.com/in/vedparkash-singh/}{\raisebox{-0.2\height}\faLinkedin\ \underline{www.linkedin.com/in/vedparkash-singh/}}  ~
+    \href{https://github.com/}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/Vedparkash5}}
+    \vspace{-8pt}
+\end{center}
 
-\divider
 
-\cvevent{COVID-19 Research}{}{June 2020}{}
-\begin{itemize}
-\item Determined that policy and demographics like insurance rate, population density, and quality of living of different US state
-does not have significant effects on the overall number of COVID-19 cases in that state
-\item Performed statistical and geo-spatial analysis on wrangled data using the Python libraries Pandas and Numpy to perform
-linear regression and to visualize that state demographics don’t have significant impact on COVID-19 cases
-\end{itemize}
- \medskip
-% use ONLY \newpage if you want to force a page break for
-% ONLY the current column
-\newpage
- 
-\switchcolumn
-
-\cvsection{Education}
- 
-
-\cvevent{B.S.\ Cognitive Science}{University of California, San Diego }{September 2018 -- December 2021}{}
-\begin{itemize}
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+   \resumeSubheading
+      {University of California, San Diego}{La Jolla, CA}
+      {Bachelor's of Science in Cognitive Science}{Oct. 2018 -- Jun. 2022}
+      \begin{itemize}
     \item Specialization in Machine Learning and Neural Computation
-    \item Provost Honors
 \end{itemize}
-\cvsection{Leadership}
-
-\cvevent{Vice President}{Sikh Student Association}{October 2019 -- Ongoing}{}
-\begin{itemize}
-\item Revitalized a student org that acted as a base for a strong community for Sikh and Punjabi students in the San Diego region
-\item Continued to have virtual events during COVID lock down in order to keep high morals and establish a safe zone for people to rely on mentally and emothionally
-\item Increased exposure to Sikhism in the San Diego area by organizing events, managing fundraisers, leading discussion, as well as creating a website to educate about the different aspects of the community  and to expand the community
-
-\end{itemize}
-
-\cvsection{Courses}
-\begin{itemize}
-\item Supervised Machine Learning Algorithms   
-\item AI: Search and Reasoning   
-\item Advanced Data Structures   
-\item Data Science in Practice
-\item Theory of Computation
-\item Algorithm and System Analysis
-\item Discrete Mathematics
-\item Linear Algebra
-\end{itemize}
-
-\cvsection{Strengths}
-
-\cvtag{Hard-working}
-\cvtag{Eye for detail}\\
-\cvtag{Motivator \& Leader}
-
-\divider\smallskip
-
-\cvtag{C++}
-\cvtag{Python}
-\cvtag{Statistical Analysis}
-\cvtag{Java}
-\cvtag{Numpy}
-\cvtag{Sklearn}
-\cvtag{Pandas}
-\cvtag{React Native}
-\cvtag{Node.js}
-\cvtag{Matlab}
-
-\cvsection{Languages}
-\cvtag{Spanish}
-\cvtag{Punjabi}
-\cvtag{Hindi}
-
-
-%% Yeah I didn't spend too much time making all the
-%% spacing consistent... sorry. Use \smallskip, \medskip,
-%% \bigskip, \vpsace etc to make ajustments.
-\medskip
+     
+  \resumeSubHeadingListEnd
  
-% \divider
+
+          \vspace{-16pt}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {UCSD Computer Science and Engineering Department}{Dec. 2019 -- Present}
+      {Lead Tutor}{La Jolla, CA }
+      \resumeItemListStart
+        \resumeItem
+          {Lead labs, discussions, and review sessions where I helped students learn and review the course material while advising other tutors in resolving confusing and complicated situations relating to students}
+        \resumeItem
+          {Increased student retention of course material by designing and proctoring labs, home works, and quizzes that provided students hands on practice with course material including recursion, data structures, object-oriented programming, and software engineering tools}
+      \resumeItemListEnd
  
-\end{paracol}
+      \resumeSubheading
+      {JP Morgan Chase and Co Software Engineering Virtual Experience}{Aug. 2020 -- Sep. 2020}
+      {Developer}{Virtual }
+      \resumeItemListStart
+        \resumeItem
+          {Optimized and simplified the process of monitoring of potential trade opportunities for the user by expanding the dashboard with visualizations using  JP Morgan’s Perspective software technology}
+        \resumeItem
+          {Used React and Node.js in order to collect the performance of two stocks from a financial data feed and Python to calculate the level of correlation between the stocks}
+      \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Pomo Bears} $|$ \emph{JavaScript, CSS, HTML, Figma, Miro, Cypress}}{Jan. 2021 -- Apr. 2021}
+          \resumeItemListStart
+            \resumeItem{Created a simple and efficient pomodoro web application using HTML,CSS, and JavaScript that helped users maximize productivity by setting up calculated work/break cycles as well as statistics analyzing daily and overall performance of the user}
+            \resumeItem{Researched human cognition on focus and productivity to develope user stories, highfidelities, and wireframes using Figma to create the minimalistic user interface of the website which reduces the cognitive load of the user and encourages focus towards the task at hand}
+             
+          \resumeItemListEnd
+          \vspace{-15pt}
+      \resumeProjectHeading
+          {\textbf{Seizure Detection} $|$ \emph{Python, Google Colaboratory, Matplotlib, NumPy }}{Mar. 2021 -- Apr.2021}
+          \resumeItemListStart
+            \resumeItem{Optimized different machine learning algorithms and hyper parameters onto a data set of electroencephalography brain waves in order to predict if someone is having a seizure depending on the brain waves they are omitting}
+            \resumeItem{Analyzed the performance of different models such as KNN, Logistic Regression, and Decision trees by using a GridSearchCV to optimize the best hyper parameters for each model}
+            \resumeItem{Generated a KNN model that had an accuracy of 98 percent as well as a recall of 99 percent with an optimized hyper parameter of 1 nearest neighbor}
+          \resumeItemListEnd
+          \vspace{-15pt}
+          \resumeProjectHeading
+          {\textbf{Eggspire} $|$ \emph{PHP, Javascript, Html, CSS, mySQL}}{Dec. 2019 -- Jan. 2020}
+          \resumeItemListStart
+            \resumeItem{Reduced wastefulness in people by creating a web application using PHP, Javascript, Html, and CSS that acts as a grocery list that also monitors when your food will expire}
+            \resumeItem{Scraped data about food expiration using the parsehub API, created wireframe designs of the page using Figma, and using mySQL to maintain and manipulate the dataset, I created a website that kept track of the foods in my kitchen }
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+\vspace{-15pt}
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, C, C++, HTML/CSS, JavaScript, mySQL, PHP} \\
+     \textbf{Developer Tools}{: VS Code, Eclipse, GDB/JDB, Valgrind, Vim,Figma, Miro } \\
+     \textbf{Technologies/Frameworks}{: Linux, Bash/Unix, Git, JUnit, Cypress, Jupyter Notebook} \\
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
+
+%-----------INVOLVEMENT---------------
+\section{Leadership / Extracurricular}
+    \resumeSubHeadingListStart
+        \resumeSubheading{UCSD Sikh Student Association}{Spring 2020 -- Present}{Vice President}{San Diego}
+            \resumeItemListStart
+            
+                \resumeItem{Increased exposure to Sikhism, a monotheistic religion origination from South Asia, in Californian universities by organizing events, managing fundraisers, leading discussions, as well as creating a website to educate everyone about the different aspects of the community}
+                 \resumeItem{ Continued to have virtual events centered around stress relive and fun during COVID lock down in order to keep high morals and establish a safe zone for people to rely on mentally and emotionally}
+            \resumeItemListEnd
+        
+    \resumeSubHeadingListEnd
 
 
 \end{document}
